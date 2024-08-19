@@ -1,4 +1,4 @@
-from court_reference import CourtReference
+from .court_reference import CourtReference
 import numpy as np
 import cv2
 from scipy.spatial import distance
@@ -28,7 +28,7 @@ def get_trans_matrix(points):
             dists = []
             for i in range(12):
                 if i not in inds and points[i][0] is not None:
-                    dists.append(distance.euclidean(points[i], trans_kps[i]))
+                    dists.append(distance.euclidean(points[i], trans_kps[i].squeeze()))
             dist_median = np.mean(dists)
             if dist_median < dist_max:
                 matrix_trans = matrix

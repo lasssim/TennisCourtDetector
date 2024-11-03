@@ -20,9 +20,9 @@ def refine_kps(img, x_ct, y_ct, crop_size=40):
     
     img_height, img_width = img.shape[:2]
     x_min = max(x_ct-crop_size, 0)
-    x_max = min(img_height, x_ct+crop_size)
+    x_max = min(img_width, x_ct+crop_size)
     y_min = max(y_ct-crop_size, 0)
-    y_max = min(img_width, y_ct+crop_size)
+    y_max = min(img_height, y_ct+crop_size)
 
     img_crop = img[x_min:x_max, y_min:y_max]
     lines = detect_lines(img_crop)
